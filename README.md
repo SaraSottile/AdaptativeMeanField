@@ -4,16 +4,16 @@
 
 <h2>Description</h2>
 
-In this repository you can found the description of the model in the paper "A minimal model for multigroup adaptive SIS epidemics", written by Massimo A. Achterberg, <a href="https://mattiasensi.github.io/" target="_blank">Mattia Sensi</a>  and <a href="https://sarasottile.github.io/" target="_blank">Sara Sottile</a>.
+This repository contains the supplementary material related to the paper "A minimal model for multigroup adaptive SIS epidemics", co-authored by Massimo A. Achterberg, <a href="https://mattiasensi.github.io/" target="_blank">Mattia Sensi</a>  and <a href="https://sarasottile.github.io/" target="_blank">Sara Sottile</a>.
 
-The preprint version of the paper can be found <a href="https://arxiv.org/abs/2407.17639" target="_blank">here</a>. Each feedback is very welcome. If you have found a bug or have problems, or want to give advises, please contact us:
+The preprint version of the paper can be found <a href="https://arxiv.org/abs/2407.17639" target="_blank">here</a>. Feedback is welcome! If you encouter a bug or have problems, or want to give advice, please contact us:
 
 <p>M.A.Achterberg@tudelft.nl</p>
 <p>mattia.sensi@polito.it</p>
 <p>sara.sottile4@unibo.it</p>
 
 <h2>Overview</h2>
-This repository contains the MATLAB codes used to generate the figures in the paper. The provided scripts include the necessary parameters and methods to reproduce the figures.
+This repository contains the MATLAB codes used to generate the figures in the paper. The provided scripts include the necessary parameters and methods to reproduce the figures. In particular, the random seeds provided will allow user to obtain the exact same values we used.
 
 <h2>Structure</h2>
 The repository is organized into three folders, each corresponding to a specific set of figures from the paper:
