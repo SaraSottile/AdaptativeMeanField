@@ -18,9 +18,10 @@ This repository contains the MATLAB codes used to generate the figures in the pa
 <h2>Structure</h2>
 The repository is organized into three folders, each corresponding to a specific set of figures from the paper:
 
-Folder 1: MATLAB codes for Figure 2.
-Folder 2: MATLAB codes for Figures 3-4.
-Folder 3: MATLAB codes for Figures 5-6.
+<li>Folder 1: MATLAB codes for Figure 2.</li>
+<li>Folder 2: MATLAB codes for Figures 3-4.</li>
+<li>Folder 3: MATLAB codes for Figure 5.</li>
+
 Each folder includes:
 
 <li>MATLAB scripts for figure generation.</li>
