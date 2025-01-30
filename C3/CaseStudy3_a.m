@@ -132,7 +132,7 @@ figure; set(gcf,'position',[200 200 400 300]); hold all;
 plot(z_average, y_average, 'b');    % Show average trajectory
 plot(z0, y0, 'b*');                 % show average starting point
 plot(zend, yend, 'k.', 'Markersize', 22); % Show average end point
-% plot(1, 0, 'r.','Markersize',22);   % Show DFE (TO BE DONE!)
+% plot(1, 0, 'r.','Markersize',22);   % Show DFE
 hold off;
 xlim([0 1]);
 ylim([0 1]);
@@ -172,11 +172,11 @@ ylabel('prevalence');
 toc;
 
 
-% NIMFA equation (1a)
+% NIMFA equation (2a)
 function output = f1(i, y, z, delta, beta)
     output = - delta(i)*y(i) + (1-y(i))*(beta(i,:).*z(i,:))*y';
 end
-% Network-changing equation (1b)
+% Network-changing equation (2b)
 function output = f2(i, j, y, z, zeta, xi, fbr_in, fcr_in, fbr_out, fcr_out)
     if (i==j)
         output = - zeta(i,j) * z(i,j) * fbr_in(y(i), mean(y)) + xi(i,j) * (1-z(i,j)) * fcr_in(y(i), mean(y));
