@@ -8,7 +8,6 @@ A =  load('graph1.mat');% Adjacency matrix
 A = table2array(struct2table(A)) + eye(n);             % add diagonal to A
 beta = 1.2*rand(n,n);     % Infection rate \beta_{ij}
 T = 10;
-f = @(t)  1;% (mod(t,T) <= T/2)%sin(pi*t/T).^2;%% %0.5; %% time-varying function
 delta = 0.5*ones(n,1);      % Curing rate \delta_i
 zeta = 1*rand(n,n);       % Link-breaking rate \zeta_{ij}
 xi = 1*rand(n,n);         % Link-creation rate \xi_{ij}
@@ -47,7 +46,7 @@ R0 = calculateR0(n, delta, beta_matrix, zeta, xi, fbr_in, fcr_in, fbr_out_PerHub
 % Perform simulations (simple Forward Euler)
 for t=2:Nt
     for i=1:n
-        y(t,i) = y(t-1,i) + dt * f1(i, y(t-1,:), squeeze(z(t-1,:,:)), delta, beta_matrix * f(vector_t(t)));
+        y(t,i) = y(t-1,i) + dt * f1(i, y(t-1,:), squeeze(z(t-1,:,:)), delta, beta_matrix);
         for j=1:n
             if beta_matrix(i,j)>0 || i==j
                 z(t,i,j) = z(t-1,i,j) + dt * f2(i, j, y(t-1,:), squeeze(z(t-1,:,:)), zeta, xi, fbr_in, fcr_in, fbr_out_PerHub, fcr_out_PerHub, fbr_out_HubPer, fcr_out_HubPer);
@@ -126,7 +125,7 @@ figure; set(gcf,'position',[200 200 400 300]); hold all;
 plot(z_average, y_average, 'b');    % Show average trajectory
 plot(z0, y0, 'b*');                 % show average starting point
 plot(zend, yend, 'k.', 'Markersize', 22); % Show average end point
-% plot(1, 0, 'r.','Markersize',22);   % Show DFE (TO BE DONE!)
+% plot(1, 0, 'r.','Markersize',22);   % Show DFE 
 hold off;
 xlim([0 1]);
 ylim([0 1]);
@@ -137,11 +136,11 @@ ylabel('average prevalence $\bar{y}$');
 
 toc;
 
-% NIMFA equation (1a)
+% NIMFA equation (2a)
 function output = f1(i, y, z, delta, beta)
     output = - delta(i)*y(i) + (1-y(i))*(beta(i,:).*z(i,:))*y';
 end
-% Network-changing equation (1b)
+% Network-changing equation (2b)
 function output = f2(i, j, y, z, zeta, xi, fbr_in, fcr_in, fbr_out_PerHub, fcr_out_PerHub, fbr_out_HubPer, fcr_out_HubPer)
     if (i==j)
         output = - zeta(i,j) * z(i,j) * fbr_in(y(i), mean(y)) + xi(i,j) * (1-z(i,j)) * fcr_in(y(i), mean(y));
